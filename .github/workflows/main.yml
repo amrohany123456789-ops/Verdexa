@@ -1,3 +1,4 @@
+
 name: Build Android APK
 
 on:
@@ -8,6 +9,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./verdexa
 
     steps:
       - name: Checkout code
@@ -34,4 +39,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Verdexa-APK
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: verdexa/build/app/outputs/flutter-apk/app-release.apk
