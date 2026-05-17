@@ -9,6 +9,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: Verdexa
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -34,5 +38,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Verdexa-APK
-          path: build/app/outputs/flutter-apk/app-release.apk
-
+          path: Verdexa/build/app/outputs/flutter-apk/app-release.apk
