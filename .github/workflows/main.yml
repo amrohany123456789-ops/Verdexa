@@ -24,14 +24,16 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: Install Dependencies
-        run: flutter pub get
-
-      - name: Build APK
-        run: flutter build apk --release
+      - name: Install Dependencies and Build APK
+        run: |
+          PROJECT_DIR=$(dirname $(find . -name pubspec.yaml -print -quit))
+          echo "Found project root at: $PROJECT_DIR"
+          cd $PROJECT_DIR
+          flutter pub get
+          flutter build apk --release
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Verdexa-APK
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: "**/build/app/outputs/flutter-apk/app-release.apk"
